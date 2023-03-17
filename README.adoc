@@ -1,8 +1,6 @@
 :spring_version: current
 :toc:
 :project_id: gs-rest-service
-:spring_version: current
-:spring_boot_version: 2.2.1.RELEASE
 :icons: font
 :source-highlighter: prettify
 
@@ -45,42 +43,27 @@ response, as the following listing shows:
 
 == What You Need
 
-:java_version: 1.8
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/prereq_editor_jdk_buildtools.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/how_to_complete_this_guide.adoc[]
 
 [[scratch]]
 == Starting with Spring Initializr
 
-For all Spring applications, you should start with the https://start.spring.io[Spring
-Initializr]. The Initializr offers a fast way to pull in all the dependencies you need for
-an application and does a lot of the setup for you. This example needs only the Spring Web
-dependency. The following image shows the Initializr set up for this sample project:
+You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=rest-service&name=rest-service&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.rest-service&dependencies=web[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
 
-image::images/initializr.png[]
+To manually initialize the project:
 
-NOTE: The preceding image shows the Initializr with Maven chosen as the build tool. You
-can also use Gradle. It also shows values of `com.example` and `rest-service` as the Group
-and Artifact, respectively. You will use those values throughout the rest of this sample.
+. Navigate to https://start.spring.io.
+This service pulls in all the dependencies you need for an application and does most of the setup for you.
+. Choose either Gradle or Maven and the language you want to use. This guide assumes that you chose Java.
+. Click *Dependencies* and select *Spring Web*.
+. Click *Generate*.
+. Download the resulting ZIP file, which is an archive of a web application that is configured with your choices.
 
-The following listing shows the `pom.xml` file that is created when you choose Maven:
+NOTE: If your IDE has the Spring Initializr integration, you can complete this process from your IDE.
 
-====
-[source,xml]
-----
-include::initial/pom.xml[]
-----
-====
-
-The following listing shows the `build.gradle` file that is created when you choose Gradle:
-
-====
-[source,text]
-----
-include::initial/build.gradle[]
-----
-====
+NOTE: You can also fork the project from Github and open it in your IDE or other editor.
 
 [[initial]]
 == Create a Resource Representation Class
@@ -107,8 +90,7 @@ The `id` field is a unique identifier for the greeting, and `content` is the tex
 representation of the greeting.
 
 To model the greeting representation, create a resource representation class. To do so,
-provide a plain old Java object with fields, constructors, and accessors for the `id` and
-`content` data, as the following listing (from
+provide a Java record class for the `id` and `content` data, as the following listing (from
 `src/main/java/com/example/restservice/Greeting.java`) shows:
 
 [source,java]
@@ -166,15 +148,15 @@ object instead of a view. It is shorthand for including both `@Controller` and
 
 The `Greeting` object must be converted to JSON. Thanks to Spring's HTTP message converter
 support, you need not do this conversion manually. Because
-https://wiki.fasterxml.com/JacksonHome[Jackson 2] is on the classpath, Spring's
+https://github.com/FasterXML/jackson[Jackson 2] is on the classpath, Spring's
 https://docs.spring.io/spring/docs/{spring_version}/javadoc-api/org/springframework/http/converter/json/MappingJackson2HttpMessageConverter.html[`MappingJackson2HttpMessageConverter`]
 is automatically chosen to convert the `Greeting` instance to JSON.
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application-new-path.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/spring-boot-application-new-path.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_subhead.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_subhead.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_with_both.adoc[]
 
 Logging output is displayed. The service should be up and running within a few seconds.
 
@@ -227,7 +209,7 @@ The following guides may also be helpful:
 * https://spring.io/guides/gs/consuming-rest-jquery/[Consuming a RESTful Web Service with jQuery]
 * https://spring.io/guides/gs/consuming-rest-restjs/[Consuming a RESTful Web Service with rest.js]
 * https://spring.io/guides/gs/securing-web/[Securing a Web Application]
-* https://spring.io/guides/tutorials/bookmarks/[Building REST services with Spring]
+* https://spring.io/guides/tutorials/rest/[Building REST services with Spring]
 * https://spring.io/guides/tutorials/react-and-spring-data-rest/[React.js and Spring Data REST]
 * https://spring.io/guides/gs/spring-boot/[Building an Application with Spring Boot]
 * https://spring.io/guides/gs/testing-restdocs/[Creating API Documentation with Restdocs]
@@ -235,4 +217,4 @@ The following guides may also be helpful:
 * https://spring.io/guides/gs/rest-hateoas/[Building a Hypermedia-Driven RESTful Web Service]
 * https://spring.io/guides/gs/circuit-breaker/[Circuit Breaker]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/footer.adoc[]
